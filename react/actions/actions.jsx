@@ -1,13 +1,13 @@
 let id = 3;
 
 export default {
-  add (todo) {
-    return { id: ++id, type: "ADD_TODO", text: todo }
+  add (donut) {
+    return { id: ++id, type: "ADD_DONUT", text: donut }
   },
   remove (id) {
-    return {id, type: "REMOVE_TODO"}
+    return {id, type: "REMOVE_DONUT"}
   },
   update (id, value) {
-    return {id, text: value, type: "UPDATE_TODO"}
+    return {id, text: value, type: "UPDATE_DONUT"}
   }
 }

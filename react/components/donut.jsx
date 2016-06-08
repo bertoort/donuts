@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-class Todo extends Component {
+class Donut extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = { editing: false }
   }
   remove() {
-    this.props.actions.remove(this.props.todo.id);
+    this.props.actions.remove(this.props.donut.id);
   }
   edit(){
     this.setState({editing: !this.state.editing});
@@ -15,20 +15,20 @@ class Todo extends Component {
     return (
       <div>
         { this.state.editing
-          ? <EditTodo todo={this.props.todo} editing={this.edit.bind(this)} actions={this.props.actions}/>
-          : <TodoText todo={this.props.todo} edit={this.edit.bind(this)} remove={this.remove.bind(this)} /> }
+          ? <EditDonut donut={this.props.donut} editing={this.edit.bind(this)} actions={this.props.actions}/>
+          : <DonutText donut={this.props.donut} edit={this.edit.bind(this)} remove={this.remove.bind(this)} /> }
       </div>
       )
   }
 }
 
-class EditTodo extends Component {
+class EditDonut extends Component {
   componentDidMount() {
     this.refs.updateText.focus();
   }
   edit (event) {
     if (this.refs.updateText.value) {
-      this.props.actions.update(this.props.todo.id, this.refs.updateText.value)
+      this.props.actions.update(this.props.donut.id, this.refs.updateText.value)
       this.props.editing()
     }
     event.preventDefault()
@@ -37,7 +37,7 @@ class EditTodo extends Component {
     return (
       <div>
         <form onSubmit={this.edit.bind(this)}>
-          <input ref="updateText" defaultValue={this.props.todo.text} autofocus/>
+          <input ref="updateText" defaultValue={this.props.donut.text} autofocus/>
           <button type="submit">Edit</button>
         </form>
       </div>
@@ -45,15 +45,14 @@ class EditTodo extends Component {
   }
 }
 
-class TodoText extends Component {
+class DonutText extends Component {
   render () {
     return (
       <div>
-        <span onDoubleClick={this.props.edit}>{this.props.todo.text}</span>
-        <button onClick={this.props.remove}>X</button>
+        <div className="donut sprinkles" onClick={this.props.remove}></div>
       </div>
     )
   }
 }
 
-export default Todo
+export default Donut

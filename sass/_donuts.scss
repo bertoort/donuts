@@ -1,0 +1,62 @@
+.donut {
+  border-radius: 50%;
+  box-shadow:.5vw .5vw 0 rgba(0,0,0,.1);
+  float: left;
+  height: 25vw;
+  width: 25vw;
+  margin: 1vw;
+  position: relative;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.hole {
+  border-radius: 50%;
+  box-shadow: inset .5vw .5vw 0 rgba(0,0,0,.1);
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 10vw;
+  width: 10vw;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.donut.glazed {
+  background-color: $cream;
+  border: 2vw solid $wheat;
+
+  &::before {
+    @extend .hole;
+    background-color: white;
+    border: 2vw solid $wheat;
+  }
+}
+
+.donut.sprinkles {
+  background-color: $pink;
+  border: 2vw solid $wheat;
+  background-image: radial-gradient(
+    #0fc 15%, transparent 16%),
+    radial-gradient(yellow 15%,
+      transparent 16%);
+  background-size: 6vw 6vw;
+  background-position: 0 0, 30px 30px;
+
+  &::after {
+    @extend .hole;
+    background-color: white;
+    border: 2vw solid $wheat;
+  }
+}
+
+.donut.chocolate {
+  background-color: $dark-brown;
+  border: 2vw solid $brown;
+  &::before {
+    @extend .hole;
+    background-color: white;
+    border: 2vw solid $brown;
+  }
+}

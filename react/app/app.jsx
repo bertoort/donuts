@@ -1,13 +1,15 @@
 import React from "react"
 import {createStore} from "redux"
 import {render} from "react-dom"
-import Todo from "./../components/todos.jsx"
+import Donuts from "./../components/donuts.jsx"
 import { Provider } from 'react-redux'
-import {todoApp} from "./../reducers/todoApp.jsx"
+import {donutGame} from "./../reducers/donutGame.jsx"
+
+require('!raw!sass!../../sass/style.scss');
 
 render(
-  <Provider store={createStore(todoApp)}>
-    <Todo/>
+  <Provider store={createStore(donutGame)}>
+    <Donuts/>
   </Provider>
-  , document.getElementById('todo')
+  , document.getElementById('donuts')
 )
