@@ -1,13 +1,11 @@
-let id = 3;
-
 export default {
-  add (donut) {
-    return { id: ++id, type: "ADD_DONUT", text: donut }
+  remove (donutId, rowId) {
+    return {donutId, rowId, type: "REMOVE_DONUT"}
   },
-  remove (id) {
-    return {id, type: "REMOVE_DONUT"}
+  undo () {
+    return {type: "UNDO_MOVE"}
   },
-  update (id, value) {
-    return {id, text: value, type: "UPDATE_DONUT"}
+  submit () {
+    return {type: "SUBMIT_TURN"}
   }
 }

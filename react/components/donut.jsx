@@ -5,7 +5,7 @@ class Donut extends Component {
     super(props, context)
   }
   remove() {
-    this.props.actions.remove(this.props.donut.id);
+    this.props.actions.remove(this.props.donut.id, this.props.rowId);
   }
   render () {
     let donut = `donut ${this.props.donut.flavor}`
