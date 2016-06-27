@@ -4,15 +4,15 @@ import Donut from "./donut.jsx"
 class DonutRow extends Component {
   render () {
     let donuts = this.props.donuts.map(donut => {
-      return( <li key={donut.id}>
+      return( <div key={donut.id}>
                 <Donut donut={donut} actions={this.props.actions}/>
-              </li>
+              </div>
             )
     })
     return (
-      <ul>
+      <div>
         {donuts}
-      </ul>
+      </div>
     )
   }
 }

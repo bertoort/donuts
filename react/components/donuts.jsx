@@ -1,16 +1,23 @@
 import React, {Component, PropTypes} from "react"
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Donuts from "./donutRow.jsx"
+import DonutRow from "./donutRow.jsx"
 import DonutActions from "./../actions/actions.jsx"
 
 class Donut extends Component {
   render () {
-    const { donuts, actions } = this.props
+    let donutRows = this.props.donuts.map((_, i) => {
+      return( <li key={i} className="row">
+                <DonutRow donuts={this.props.donuts[i]} actions={this.props.actions}/>
+              </li>
+            )
+    })
     return (
       <div>
         <h1> Donuts </h1>
-        <Donuts donuts={donuts} actions={actions}/>
+        <ul>
+          {donutRows}
+        </ul>
       </div>
     )
   }

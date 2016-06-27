@@ -1,10 +1,14 @@
+$radius: 10vw;
+$border: .5vw;
+$hole-radius: 2.5;
+
 .donut {
   border-radius: 50%;
   box-shadow:.5vw .5vw 0 rgba(0,0,0,.1);
   float: left;
-  height: 25vw;
-  width: 25vw;
-  margin: 1vw;
+  height: $radius;
+  width: $radius;
+  margin: .5vw;
   position: relative;
   &:hover {
     cursor: pointer;
@@ -18,45 +22,45 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 10vw;
-  width: 10vw;
+  height: $radius/$hole-radius;
+  width: $radius/$hole-radius;
   transform: translateX(-50%) translateY(-50%);
 }
 
 .donut.glazed {
   background-color: $cream;
-  border: 2vw solid $wheat;
+  border: $border solid $wheat;
 
   &::before {
     @extend .hole;
     background-color: white;
-    border: 2vw solid $wheat;
+    border: $border solid $wheat;
   }
 }
 
 .donut.sprinkles {
   background-color: $pink;
-  border: 2vw solid $wheat;
+  border: $border solid $wheat;
   background-image: radial-gradient(
     #0fc 15%, transparent 16%),
     radial-gradient(yellow 15%,
       transparent 16%);
-  background-size: 6vw 6vw;
-  background-position: 0 0, 30px 30px;
+  background-size: 2vw 2vw;
+  background-position: 0 0, 10px 10px;
 
   &::after {
     @extend .hole;
     background-color: white;
-    border: 2vw solid $wheat;
+    border: $border solid $wheat;
   }
 }
 
 .donut.chocolate {
   background-color: $dark-brown;
-  border: 2vw solid $brown;
+  border: $border solid $brown;
   &::before {
     @extend .hole;
     background-color: white;
-    border: 2vw solid $brown;
+    border: $border solid $brown;
   }
 }

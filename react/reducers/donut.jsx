@@ -3,21 +3,14 @@ export const donut = (state, action) => {
     case 'ADD_DONUT':
       return {
         id: action.id,
-        text: action.text,
       };
-    case 'UPDATE_DONUT':
-      if (state.id !== action.id) {
-        return state
-      }
-      return {
-        id: action.id,
-        text: action.text
-      }
     case 'REMOVE_DONUT':
-      return state.reduce((newState, donut) => {
-        donut.id !== action.id ? newState.push(donut) : null
-        return newState
-      }, [])
+      return state.map(rows => {
+        return rows.reduce((newRow, donut) => {
+          if (donut.id !== action.id) newRow.push(donut);
+          return newRow
+        }, [])
+      })
     default:
       return state;
   }

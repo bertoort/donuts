@@ -8,10 +8,6 @@ export const donuts = (state = initialData.donuts, action) => {
         ...state,
         donut(undefined, action)
       ];
-    case 'UPDATE_DONUT':
-      return state.map(singleDonut => {
-        return donut(singleDonut, action)
-      })
     case 'REMOVE_DONUT':
       return donut(state, action)
     default:
