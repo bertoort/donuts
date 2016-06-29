@@ -20,4 +20,23 @@ class Buttons extends Component {
   }
 }
 
-export default Buttons
+class Reset extends Component {
+  constructor(props, context) {
+    super(props, context)
+  }
+  reset() {
+    this.props.actions.fetchDonuts();
+  }
+  render () {
+    return (
+      <div>
+        <button className="btn" onClick={this.reset.bind(this)}>Reset</button>
+      </div>
+    )
+  }
+}
+
+export default {
+  Buttons,
+  Reset
+}

@@ -1,10 +1,3 @@
-import $ from 'jquery'
-
-$.get('/random-board')
-  .done(function (data) {
-    console.log(data);
-  })
-
 export default [
   [
     {id: 1, flavor: "sprinkles"},

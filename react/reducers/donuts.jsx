@@ -10,6 +10,8 @@ let initialState = {
 export const game = (state = initialState, action) => {
   let stateClone = JSON.parse(JSON.stringify(state))
   switch (action.type) {
+    case 'LOAD_DONUTS':
+      return donut(stateClone, action)
     case 'REMOVE_DONUT':
       return donut(stateClone, action)
     case 'UNDO_MOVE':

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import DonutRow from "./donutRow.jsx"
 import DonutActions from "./../actions/actions.jsx"
-import Buttons from "./buttons.jsx"
+import {Buttons, Reset} from "./buttons.jsx"
 
 class Donut extends Component {
   render () {
@@ -21,7 +21,8 @@ class Donut extends Component {
           <ul>
             {donutRows}
           </ul>
-          {this.props.game.currentRow !== undefined? < Buttons actions={this.props.actions}/> : undefined}
+          {this.props.game.currentRow !== undefined? <Buttons actions={this.props.actions}/> : undefined}
+          <Reset actions={this.props.actions}/>
         </div>
       </div>
     )

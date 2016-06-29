@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -22,7 +21,6 @@ func generateBoard(rows int) [][]Donut {
 	if rows == 0 {
 		rows = 3
 	}
-	fmt.Println(randomDonut())
 	board := [][]Donut{}
 	for i := 0; i < rows; i++ {
 		board = append(board, randomRow())

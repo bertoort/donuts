@@ -1,5 +1,10 @@
 export const donut = (state, action) => {
   switch (action.type) {
+    case 'LOAD_DONUTS':
+      delete state.currentRow
+      delete state.savedDonuts
+      state.donuts = action.data
+      return state
     case 'SUBMIT_TURN':
       delete state.currentRow
       delete state.savedDonuts

@@ -70,13 +70,23 @@
 	
 	var _reactRedux = __webpack_require__(174);
 	
+	var _reduxThunk = __webpack_require__(201);
+	
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+	
 	var _reducersDonutGameJsx = __webpack_require__(191);
+	
+	var _actionsActionsJsx = __webpack_require__(189);
 	
 	__webpack_require__(196);
 	
+	var store = (0, _redux.createStore)(_reducersDonutGameJsx.donutGame, (0, _redux.applyMiddleware)(_reduxThunk2["default"]));
+	
+	store.dispatch((0, _actionsActionsJsx.fetchDonuts)(3));
+	
 	(0, _reactDom.render)(_react2["default"].createElement(
 	  _reactRedux.Provider,
-	  { store: (0, _redux.createStore)(_reducersDonutGameJsx.donutGame) },
+	  { store: store },
 	  _react2["default"].createElement(_componentsDonutsJsx2["default"], null)
 	), document.getElementById('donuts'));
 
@@ -20566,8 +20576,6 @@
 	
 	var _buttonsJsx = __webpack_require__(190);
 	
-	var _buttonsJsx2 = _interopRequireDefault(_buttonsJsx);
-	
 	var Donut = (function (_Component) {
 	  _inherits(Donut, _Component);
 	
@@ -20605,7 +20613,8 @@
 	            null,
 	            donutRows
 	          ),
-	          this.props.game.currentRow !== undefined ? _react2['default'].createElement(_buttonsJsx2['default'], { actions: this.props.actions }) : undefined
+	          this.props.game.currentRow !== undefined ? _react2['default'].createElement(_buttonsJsx.Buttons, { actions: this.props.actions }) : undefined,
+	          _react2['default'].createElement(_buttonsJsx.Reset, { actions: this.props.actions })
 	        )
 	      );
 	    }
@@ -21619,13 +21628,24 @@
 
 /***/ },
 /* 189 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	var _jquery = __webpack_require__(195);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	function load(data) {
+	  return { data: data, type: "LOAD_DONUTS" };
+	}
+	
 	exports["default"] = {
 	  remove: function remove(donutId, rowId) {
 	    return { donutId: donutId, rowId: rowId, type: "REMOVE_DONUT" };
@@ -21635,6 +21655,13 @@
 	  },
 	  submit: function submit() {
 	    return { type: "SUBMIT_TURN" };
+	  },
+	  fetchDonuts: function fetchDonuts(rows) {
+	    return function (dispatch) {
+	      return _jquery2["default"].get("/random-board?rows=" + rows).done(function (data) {
+	        return dispatch(load(data));
+	      });
+	    };
 	  }
 	};
 	module.exports = exports["default"];
@@ -21705,7 +21732,42 @@
 	  return Buttons;
 	})(_react.Component);
 	
-	exports["default"] = Buttons;
+	var Reset = (function (_Component2) {
+	  _inherits(Reset, _Component2);
+	
+	  function Reset(props, context) {
+	    _classCallCheck(this, Reset);
+	
+	    _get(Object.getPrototypeOf(Reset.prototype), "constructor", this).call(this, props, context);
+	  }
+	
+	  _createClass(Reset, [{
+	    key: "reset",
+	    value: function reset() {
+	      this.props.actions.fetchDonuts();
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2["default"].createElement(
+	        "div",
+	        null,
+	        _react2["default"].createElement(
+	          "button",
+	          { className: "btn", onClick: this.reset.bind(this) },
+	          "Reset"
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Reset;
+	})(_react.Component);
+	
+	exports["default"] = {
+	  Buttons: Buttons,
+	  Reset: Reset
+	};
 	module.exports = exports["default"];
 
 /***/ },
@@ -21756,6 +21818,8 @@
 	
 	  var stateClone = JSON.parse(JSON.stringify(state));
 	  switch (action.type) {
+	    case 'LOAD_DONUTS':
+	      return (0, _donutJsx.donut)(stateClone, action);
 	    case 'REMOVE_DONUT':
 	      return (0, _donutJsx.donut)(stateClone, action);
 	    case 'UNDO_MOVE':
@@ -21779,6 +21843,11 @@
 	});
 	var donut = function donut(state, action) {
 	  switch (action.type) {
+	    case 'LOAD_DONUTS':
+	      delete state.currentRow;
+	      delete state.savedDonuts;
+	      state.donuts = action.data;
+	      return state;
 	    case 'SUBMIT_TURN':
 	      delete state.currentRow;
 	      delete state.savedDonuts;
@@ -21810,26 +21879,15 @@
 
 /***/ },
 /* 194 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _jquery = __webpack_require__(195);
-	
-	var _jquery2 = _interopRequireDefault(_jquery);
-	
-	_jquery2['default'].get('/random-board').done(function (data) {
-	  console.log(data);
-	});
-	
-	exports['default'] = [[{ id: 1, flavor: "sprinkles" }, { id: 2, flavor: "chocolate" }, { id: 3, flavor: "glazed" }], [{ id: 5, flavor: "chocolate" }, { id: 6, flavor: "glazed" }], [{ id: 7, flavor: "sprinkles" }, { id: 8, flavor: "glazed" }, { id: 9, flavor: "glazed" }, { id: 10, flavor: "chocolate" }, { id: 11, flavor: "glazed" }]];
-	module.exports = exports['default'];
+	exports["default"] = [[{ id: 1, flavor: "sprinkles" }, { id: 2, flavor: "chocolate" }, { id: 3, flavor: "glazed" }], [{ id: 5, flavor: "chocolate" }, { id: 6, flavor: "glazed" }], [{ id: 7, flavor: "sprinkles" }, { id: 8, flavor: "glazed" }, { id: 9, flavor: "glazed" }, { id: 10, flavor: "chocolate" }, { id: 11, flavor: "glazed" }]];
+	module.exports = exports["default"];
 
 /***/ },
 /* 195 */
@@ -32227,6 +32285,34 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 201 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	function createThunkMiddleware(extraArgument) {
+	  return function (_ref) {
+	    var dispatch = _ref.dispatch;
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        if (typeof action === 'function') {
+	          return action(dispatch, getState, extraArgument);
+	        }
+	
+	        return next(action);
+	      };
+	    };
+	  };
+	}
+	
+	var thunk = createThunkMiddleware();
+	thunk.withExtraArgument = createThunkMiddleware;
+	
+	exports['default'] = thunk;
 
 /***/ }
 /******/ ]);
