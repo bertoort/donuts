@@ -17,10 +17,12 @@ class Donut extends Component {
     return (
       <div>
         <h1> Donuts </h1>
-        <ul>
-          {donutRows}
-        </ul>
-        {this.props.game.currentRow !== undefined? < Buttons actions={this.props.actions}/> : undefined}
+        <div className="container">
+          <ul>
+            {donutRows}
+          </ul>
+          {this.props.game.currentRow !== undefined? < Buttons actions={this.props.actions}/> : undefined}
+        </div>
       </div>
     )
   }

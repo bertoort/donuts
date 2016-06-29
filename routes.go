@@ -1,10 +1,12 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"text/template"
 
@@ -28,10 +30,21 @@ type attributes struct {
 	Name  string
 }
 
-// index route
+// index route will render the main page
 func index(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
 	attr := attributes{Title: "Donuts"}
 	renderTemplate(res, "index", &attr)
+}
+
+// randomBoard route will respond with a random board json
+func randomBoard(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+	rows, _ := strconv.Atoi(req.FormValue("rows"))
+	randomBoard := generateBoard(rows)
+	res.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	res.WriteHeader(http.StatusOK)
+	if err := json.NewEncoder(res).Encode(randomBoard); err != nil {
+		panic(err)
+	}
 }
 
 // render a template given a model
