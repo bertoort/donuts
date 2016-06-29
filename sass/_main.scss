@@ -6,6 +6,12 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
+  font-family: Montserrat, sans-serif;
+  color: $dark-brown;
+}
+
+.title {
+  font-size: 3em;
 }
 
 .row {
@@ -14,8 +20,11 @@ body {
   height: 30%;
 }
 
+.fixed-action-btn {
+  bottom: 45px;
+  right: 24px;
+}
 
-.container {
-  height: 100vh;
-  width: 100vw;
+button {
+  margin: 2em;
 }

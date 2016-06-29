@@ -13,8 +13,8 @@ class Buttons extends Component {
   render () {
     return (
       <div>
-        <button className="btn" onClick={this.submit.bind(this)}>Submit</button>
-        <button className="btn" onClick={this.undo.bind(this)}>Undo</button>
+        <button className="btn waves-effect waves-light pink accent-1" onClick={this.submit.bind(this)}>Submit</button>
+        <button className="btn waves-effect waves-light pink accent-1" onClick={this.undo.bind(this)}>Undo</button>
       </div>
     )
   }
@@ -31,7 +31,7 @@ class Reset extends Component {
   render () {
     return (
       <div>
-        <button className="btn" onClick={this.reset.bind(this)}>Reset</button>
+        <button className="btn reset right waves-effect waves-light pink accent-1" onClick={this.reset.bind(this)}>Reset</button>
       </div>
     )
   }
