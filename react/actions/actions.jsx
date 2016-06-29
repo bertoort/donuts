@@ -14,6 +14,9 @@ export default {
   submit () {
     return {type: "SUBMIT_TURN"}
   },
+  loading () {
+    return {type: "DISPLAY_LOADING"}
+  },
   fetchDonuts(rows) {
     return function (dispatch) {
       return $.get(`/random-board?rows=${rows}`)

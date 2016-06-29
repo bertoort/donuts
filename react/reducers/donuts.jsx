@@ -1,15 +1,16 @@
 import {donut} from "./donut.jsx";
-import initialDonuts from "../app/data.js"
 
 let initialState = {
-  //currentRow & temporaryState while editing a row
   playerTurn: true,
-  donuts: initialDonuts,
+  donuts: [[], [], []],
+  loading: true,
 }
 
 export const game = (state = initialState, action) => {
   let stateClone = JSON.parse(JSON.stringify(state))
   switch (action.type) {
+    case 'DISPLAY_LOADING':
+      return donut(stateClone, action)
     case 'LOAD_DONUTS':
       return donut(stateClone, action)
     case 'REMOVE_DONUT':

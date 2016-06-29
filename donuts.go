@@ -25,6 +25,8 @@ func generateBoard(rows int) [][]Donut {
 	for i := 0; i < rows; i++ {
 		board = append(board, randomRow())
 	}
+	// delay the response to show beautiful loading donut
+	time.Sleep(time.Second * 1)
 	return board
 }
 
@@ -36,7 +38,7 @@ func randomDonut() Donut {
 
 func randomRow() []Donut {
 	randomNum := rand.New(rand.NewSource(time.Now().UnixNano())).Intn(9)
-	row := make([]Donut, 0)
+	var row []Donut
 	for i := 0; i < randomNum+1; i++ {
 		row = append(row, randomDonut())
 	}

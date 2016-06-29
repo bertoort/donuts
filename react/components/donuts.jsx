@@ -7,25 +7,42 @@ import {Buttons, Reset} from "./buttons.jsx"
 
 class Donut extends Component {
   render () {
-    let donutRows = this.props.donuts.map((_, i) => {
-      return(
-              <li key={i} className="row">
-                <DonutRow donuts={this.props.donuts[i]} rowId={i} actions={this.props.actions}/>
-              </li>
-            )
-    })
     return (
       <div>
         <h1> Donuts </h1>
-        <div className="container">
-          <ul>
-            {donutRows}
-          </ul>
-          {this.props.game.currentRow !== undefined? <Buttons actions={this.props.actions}/> : undefined}
-          <Reset actions={this.props.actions}/>
-        </div>
+        { this.props.game.loading ?
+          <LoadingDonut donuts={this.props.donuts} actions={this.props.actions} game={this.props.game}/> :
+          <Game donuts={this.props.donuts} actions={this.props.actions} game={this.props.game} />
+         }
       </div>
     )
+  }
+}
+
+class Game extends Component {
+  render() {
+    let donutRows = this.props.donuts.map((_, i) => {
+      return (
+        <li key={i} className="row">
+          <DonutRow donuts={this.props.donuts[i]} rowId={i} actions={this.props.actions}/>
+        </li>
+      )
+    })
+    return (
+      <div className="container">
+        <ul>
+          {donutRows}
+        </ul>
+        {this.props.game.currentRow !== undefined? <Buttons actions={this.props.actions}/> : undefined}
+        <Reset actions={this.props.actions}/>
+      </div>
+    )
+  }
+}
+
+class LoadingDonut extends Component {
+  render() {
+    return <div className="donut sprinkles loading"></div>
   }
 }
 

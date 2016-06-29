@@ -45,7 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(197);
+	module.exports = __webpack_require__(194);
 
 
 /***/ },
@@ -70,15 +70,15 @@
 	
 	var _reactRedux = __webpack_require__(174);
 	
-	var _reduxThunk = __webpack_require__(201);
+	var _reduxThunk = __webpack_require__(187);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
-	var _reducersDonutGameJsx = __webpack_require__(191);
+	var _reducersDonutGameJsx = __webpack_require__(188);
 	
-	var _actionsActionsJsx = __webpack_require__(189);
+	var _actionsActionsJsx = __webpack_require__(191);
 	
-	__webpack_require__(196);
+	__webpack_require__(193);
 	
 	var store = (0, _redux.createStore)(_reducersDonutGameJsx.donutGame, (0, _redux.applyMiddleware)(_reduxThunk2["default"]));
 	
@@ -20566,15 +20566,15 @@
 	
 	var _reactRedux = __webpack_require__(174);
 	
-	var _donutRowJsx = __webpack_require__(187);
+	var _donutRowJsx = __webpack_require__(198);
 	
 	var _donutRowJsx2 = _interopRequireDefault(_donutRowJsx);
 	
-	var _actionsActionsJsx = __webpack_require__(189);
+	var _actionsActionsJsx = __webpack_require__(191);
 	
 	var _actionsActionsJsx2 = _interopRequireDefault(_actionsActionsJsx);
 	
-	var _buttonsJsx = __webpack_require__(190);
+	var _buttonsJsx = __webpack_require__(200);
 	
 	var Donut = (function (_Component) {
 	  _inherits(Donut, _Component);
@@ -20588,6 +20588,34 @@
 	  _createClass(Donut, [{
 	    key: 'render',
 	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement(
+	          'h1',
+	          null,
+	          ' Donuts '
+	        ),
+	        this.props.game.loading ? _react2['default'].createElement(LoadingDonut, { donuts: this.props.donuts, actions: this.props.actions, game: this.props.game }) : _react2['default'].createElement(Game, { donuts: this.props.donuts, actions: this.props.actions, game: this.props.game })
+	      );
+	    }
+	  }]);
+	
+	  return Donut;
+	})(_react.Component);
+	
+	var Game = (function (_Component2) {
+	  _inherits(Game, _Component2);
+	
+	  function Game() {
+	    _classCallCheck(this, Game);
+	
+	    _get(Object.getPrototypeOf(Game.prototype), 'constructor', this).apply(this, arguments);
+	  }
+	
+	  _createClass(Game, [{
+	    key: 'render',
+	    value: function render() {
 	      var _this = this;
 	
 	      var donutRows = this.props.donuts.map(function (_, i) {
@@ -20599,28 +20627,38 @@
 	      });
 	      return _react2['default'].createElement(
 	        'div',
-	        null,
+	        { className: 'container' },
 	        _react2['default'].createElement(
-	          'h1',
+	          'ul',
 	          null,
-	          ' Donuts '
+	          donutRows
 	        ),
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'container' },
-	          _react2['default'].createElement(
-	            'ul',
-	            null,
-	            donutRows
-	          ),
-	          this.props.game.currentRow !== undefined ? _react2['default'].createElement(_buttonsJsx.Buttons, { actions: this.props.actions }) : undefined,
-	          _react2['default'].createElement(_buttonsJsx.Reset, { actions: this.props.actions })
-	        )
+	        this.props.game.currentRow !== undefined ? _react2['default'].createElement(_buttonsJsx.Buttons, { actions: this.props.actions }) : undefined,
+	        _react2['default'].createElement(_buttonsJsx.Reset, { actions: this.props.actions })
 	      );
 	    }
 	  }]);
 	
-	  return Donut;
+	  return Game;
+	})(_react.Component);
+	
+	var LoadingDonut = (function (_Component3) {
+	  _inherits(LoadingDonut, _Component3);
+	
+	  function LoadingDonut() {
+	    _classCallCheck(this, LoadingDonut);
+	
+	    _get(Object.getPrototypeOf(LoadingDonut.prototype), 'constructor', this).apply(this, arguments);
+	  }
+	
+	  _createClass(LoadingDonut, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement('div', { className: 'donut sprinkles loading' });
+	    }
+	  }]);
+	
+	  return LoadingDonut;
 	})(_react.Component);
 	
 	Donut.propTypes = {
@@ -21509,269 +21547,34 @@
 
 /***/ },
 /* 187 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _donutJsx = __webpack_require__(188);
-	
-	var _donutJsx2 = _interopRequireDefault(_donutJsx);
-	
-	var DonutRow = (function (_Component) {
-	  _inherits(DonutRow, _Component);
-	
-	  function DonutRow(props, context) {
-	    _classCallCheck(this, DonutRow);
-	
-	    _get(Object.getPrototypeOf(DonutRow.prototype), "constructor", this).call(this, props, context);
-	  }
-	
-	  _createClass(DonutRow, [{
-	    key: "render",
-	    value: function render() {
-	      var _this = this;
-	
-	      var donuts = this.props.donuts.map(function (donut) {
-	        return _react2["default"].createElement(
-	          "div",
-	          { key: donut.id },
-	          _react2["default"].createElement(_donutJsx2["default"], { donut: donut, rowId: _this.props.rowId, actions: _this.props.actions })
-	        );
-	      });
-	      return _react2["default"].createElement(
-	        "div",
-	        null,
-	        donuts
-	      );
-	    }
-	  }]);
-	
-	  return DonutRow;
-	})(_react.Component);
-	
-	exports["default"] = DonutRow;
-	module.exports = exports["default"];
-
-/***/ },
-/* 188 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
+	exports.__esModule = true;
+	function createThunkMiddleware(extraArgument) {
+	  return function (_ref) {
+	    var dispatch = _ref.dispatch;
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        if (typeof action === 'function') {
+	          return action(dispatch, getState, extraArgument);
+	        }
 	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var Donut = (function (_Component) {
-	  _inherits(Donut, _Component);
-	
-	  function Donut(props, context) {
-	    _classCallCheck(this, Donut);
-	
-	    _get(Object.getPrototypeOf(Donut.prototype), 'constructor', this).call(this, props, context);
-	  }
-	
-	  _createClass(Donut, [{
-	    key: 'remove',
-	    value: function remove() {
-	      this.props.actions.remove(this.props.donut.id, this.props.rowId);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var donut = 'donut ' + this.props.donut.flavor;
-	      return _react2['default'].createElement(
-	        'div',
-	        null,
-	        _react2['default'].createElement('div', { className: donut, onClick: this.remove.bind(this) })
-	      );
-	    }
-	  }]);
-	
-	  return Donut;
-	})(_react.Component);
-	
-	exports['default'] = Donut;
-	module.exports = exports['default'];
-
-/***/ },
-/* 189 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	var _jquery = __webpack_require__(195);
-	
-	var _jquery2 = _interopRequireDefault(_jquery);
-	
-	function load(data) {
-	  return { data: data, type: "LOAD_DONUTS" };
+	        return next(action);
+	      };
+	    };
+	  };
 	}
 	
-	exports["default"] = {
-	  remove: function remove(donutId, rowId) {
-	    return { donutId: donutId, rowId: rowId, type: "REMOVE_DONUT" };
-	  },
-	  undo: function undo() {
-	    return { type: "UNDO_MOVE" };
-	  },
-	  submit: function submit() {
-	    return { type: "SUBMIT_TURN" };
-	  },
-	  fetchDonuts: function fetchDonuts(rows) {
-	    return function (dispatch) {
-	      return _jquery2["default"].get("/random-board?rows=" + rows).done(function (data) {
-	        return dispatch(load(data));
-	      });
-	    };
-	  }
-	};
-	module.exports = exports["default"];
+	var thunk = createThunkMiddleware();
+	thunk.withExtraArgument = createThunkMiddleware;
+	
+	exports['default'] = thunk;
 
 /***/ },
-/* 190 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var Buttons = (function (_Component) {
-	  _inherits(Buttons, _Component);
-	
-	  function Buttons(props, context) {
-	    _classCallCheck(this, Buttons);
-	
-	    _get(Object.getPrototypeOf(Buttons.prototype), "constructor", this).call(this, props, context);
-	  }
-	
-	  _createClass(Buttons, [{
-	    key: "submit",
-	    value: function submit() {
-	      this.props.actions.submit();
-	    }
-	  }, {
-	    key: "undo",
-	    value: function undo() {
-	      this.props.actions.undo();
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement(
-	        "div",
-	        null,
-	        _react2["default"].createElement(
-	          "button",
-	          { className: "btn", onClick: this.submit.bind(this) },
-	          "Submit"
-	        ),
-	        _react2["default"].createElement(
-	          "button",
-	          { className: "btn", onClick: this.undo.bind(this) },
-	          "Undo"
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Buttons;
-	})(_react.Component);
-	
-	var Reset = (function (_Component2) {
-	  _inherits(Reset, _Component2);
-	
-	  function Reset(props, context) {
-	    _classCallCheck(this, Reset);
-	
-	    _get(Object.getPrototypeOf(Reset.prototype), "constructor", this).call(this, props, context);
-	  }
-	
-	  _createClass(Reset, [{
-	    key: "reset",
-	    value: function reset() {
-	      this.props.actions.fetchDonuts();
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement(
-	        "div",
-	        null,
-	        _react2["default"].createElement(
-	          "button",
-	          { className: "btn", onClick: this.reset.bind(this) },
-	          "Reset"
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Reset;
-	})(_react.Component);
-	
-	exports["default"] = {
-	  Buttons: Buttons,
-	  Reset: Reset
-	};
-	module.exports = exports["default"];
-
-/***/ },
-/* 191 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21782,7 +21585,7 @@
 	
 	var _redux = __webpack_require__(159);
 	
-	var _donutsJsx = __webpack_require__(192);
+	var _donutsJsx = __webpack_require__(189);
 	
 	var donutGame = (0, _redux.combineReducers)({
 	  game: _donutsJsx.game
@@ -21790,27 +21593,21 @@
 	exports.donutGame = donutGame;
 
 /***/ },
-/* 192 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	var _donutJsx = __webpack_require__(193);
-	
-	var _appDataJs = __webpack_require__(194);
-	
-	var _appDataJs2 = _interopRequireDefault(_appDataJs);
+	var _donutJsx = __webpack_require__(190);
 	
 	var initialState = {
-	  //currentRow & temporaryState while editing a row
 	  playerTurn: true,
-	  donuts: _appDataJs2["default"]
+	  donuts: [[], [], []],
+	  loading: true
 	};
 	
 	var game = function game(state, action) {
@@ -21818,6 +21615,8 @@
 	
 	  var stateClone = JSON.parse(JSON.stringify(state));
 	  switch (action.type) {
+	    case 'DISPLAY_LOADING':
+	      return (0, _donutJsx.donut)(stateClone, action);
 	    case 'LOAD_DONUTS':
 	      return (0, _donutJsx.donut)(stateClone, action);
 	    case 'REMOVE_DONUT':
@@ -21833,7 +21632,7 @@
 	exports.game = game;
 
 /***/ },
-/* 193 */
+/* 190 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21843,10 +21642,14 @@
 	});
 	var donut = function donut(state, action) {
 	  switch (action.type) {
+	    case 'DISPLAY_LOADING':
+	      state.loading = true;
+	      return state;
 	    case 'LOAD_DONUTS':
 	      delete state.currentRow;
 	      delete state.savedDonuts;
 	      state.donuts = action.data;
+	      state.loading = false;
 	      return state;
 	    case 'SUBMIT_TURN':
 	      delete state.currentRow;
@@ -21878,19 +21681,50 @@
 	exports.donut = donut;
 
 /***/ },
-/* 194 */
-/***/ function(module, exports) {
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports["default"] = [[{ id: 1, flavor: "sprinkles" }, { id: 2, flavor: "chocolate" }, { id: 3, flavor: "glazed" }], [{ id: 5, flavor: "chocolate" }, { id: 6, flavor: "glazed" }], [{ id: 7, flavor: "sprinkles" }, { id: 8, flavor: "glazed" }, { id: 9, flavor: "glazed" }, { id: 10, flavor: "chocolate" }, { id: 11, flavor: "glazed" }]];
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	var _jquery = __webpack_require__(192);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	function load(data) {
+	  return { data: data, type: "LOAD_DONUTS" };
+	}
+	
+	exports["default"] = {
+	  remove: function remove(donutId, rowId) {
+	    return { donutId: donutId, rowId: rowId, type: "REMOVE_DONUT" };
+	  },
+	  undo: function undo() {
+	    return { type: "UNDO_MOVE" };
+	  },
+	  submit: function submit() {
+	    return { type: "SUBMIT_TURN" };
+	  },
+	  loading: function loading() {
+	    return { type: "DISPLAY_LOADING" };
+	  },
+	  fetchDonuts: function fetchDonuts(rows) {
+	    return function (dispatch) {
+	      return _jquery2["default"].get("/random-board?rows=" + rows).done(function (data) {
+	        return dispatch(load(data));
+	      });
+	    };
+	  }
+	};
 	module.exports = exports["default"];
 
 /***/ },
-/* 195 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -31933,22 +31767,22 @@
 
 
 /***/ },
-/* 196 */
+/* 193 */
 /***/ function(module, exports) {
 
-	module.exports = "/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct display in IE 9-.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline; }\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\ntemplate,\n[hidden] {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Restore the font weight unset by the previous rule.\n */\noptgroup {\n  font-weight: bold; }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n.donut {\n  border-radius: 50%;\n  box-shadow: 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  float: left;\n  height: 10vw;\n  width: 10vw;\n  margin: .5vw;\n  position: relative; }\n  .donut:hover {\n    cursor: pointer; }\n\n.hole, .donut.glazed::before, .donut.sprinkles::after, .donut.chocolate::before {\n  border-radius: 50%;\n  box-shadow: inset 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: 4vw;\n  width: 4vw;\n  transform: translateX(-50%) translateY(-50%); }\n\n.donut.glazed {\n  background-color: rgba(252, 249, 237, 0.96);\n  border: 0.5vw solid #f5deb2; }\n  .donut.glazed::before {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.sprinkles {\n  background-color: #ff708a;\n  border: 0.5vw solid #f5deb2;\n  background-image: radial-gradient(#0fc 15%, transparent 16%), radial-gradient(yellow 15%, transparent 16%);\n  background-size: 2vw 2vw;\n  background-position: 0 0, 10px 10px; }\n  .donut.sprinkles::after {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.chocolate {\n  background-color: #362311;\n  border: 0.5vw solid #5d3b1d; }\n  .donut.chocolate::before {\n    background-color: white;\n    border: 0.5vw solid #5d3b1d; }\n\n* {\n  box-sizing: border-box; }\n\nbody {\n  display: flex;\n  height: 100vh;\n  width: 100vw; }\n\n.row {\n  display: block;\n  width: 100vw;\n  height: 30%; }\n\n.container {\n  height: 100vh;\n  width: 100vw; }\n"
+	module.exports = "/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct display in IE 9-.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline; }\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\ntemplate,\n[hidden] {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Restore the font weight unset by the previous rule.\n */\noptgroup {\n  font-weight: bold; }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n.donut {\n  border-radius: 50%;\n  box-shadow: 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  float: left;\n  height: 10vw;\n  width: 10vw;\n  margin: .5vw;\n  position: relative; }\n  .donut:hover {\n    cursor: pointer; }\n\n.hole, .donut.glazed::before, .donut.sprinkles::after, .donut.chocolate::before {\n  border-radius: 50%;\n  box-shadow: inset 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: 4vw;\n  width: 4vw;\n  transform: translateX(-50%) translateY(-50%); }\n\n.donut.glazed {\n  background-color: rgba(252, 249, 237, 0.96);\n  border: 0.5vw solid #f5deb2; }\n  .donut.glazed::before {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.sprinkles {\n  background-color: #ff708a;\n  border: 0.5vw solid #f5deb2;\n  background-image: radial-gradient(#0fc 15%, transparent 16%), radial-gradient(yellow 15%, transparent 16%);\n  background-size: 2vw 2vw;\n  background-position: 0 0, 10px 10px; }\n  .donut.sprinkles::after {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.chocolate {\n  background-color: #362311;\n  border: 0.5vw solid #5d3b1d; }\n  .donut.chocolate::before {\n    background-color: white;\n    border: 0.5vw solid #5d3b1d; }\n\n.loading {\n  -webkit-animation: spin 4s infinite linear;\n  box-shadow: none; }\n  .loading.hole, .loading.donut.glazed::before, .loading.donut.sprinkles::after, .loading.donut.chocolate::before {\n    box-shadow: none; }\n  .loading:hover {\n    cursor: default; }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n* {\n  box-sizing: border-box; }\n\nbody {\n  display: flex;\n  height: 100vh;\n  width: 100vw; }\n\n.row {\n  display: block;\n  width: 100vw;\n  height: 30%; }\n\n.container {\n  height: 100vh;\n  width: 100vw; }\n"
 
 /***/ },
-/* 197 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(198);
+	var content = __webpack_require__(195);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(200)(content, {});
+	var update = __webpack_require__(197)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31965,21 +31799,21 @@
 	}
 
 /***/ },
-/* 198 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(199)();
+	exports = module.exports = __webpack_require__(196)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct display in IE 9-.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline; }\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\ntemplate,\n[hidden] {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Restore the font weight unset by the previous rule.\n */\noptgroup {\n  font-weight: bold; }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n.donut {\n  border-radius: 50%;\n  box-shadow: 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  float: left;\n  height: 10vw;\n  width: 10vw;\n  margin: .5vw;\n  position: relative; }\n  .donut:hover {\n    cursor: pointer; }\n\n.hole, .donut.glazed::before, .donut.sprinkles::after, .donut.chocolate::before {\n  border-radius: 50%;\n  box-shadow: inset 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: 4vw;\n  width: 4vw;\n  transform: translateX(-50%) translateY(-50%); }\n\n.donut.glazed {\n  background-color: rgba(252, 249, 237, 0.96);\n  border: 0.5vw solid #f5deb2; }\n  .donut.glazed::before {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.sprinkles {\n  background-color: #ff708a;\n  border: 0.5vw solid #f5deb2;\n  background-image: radial-gradient(#0fc 15%, transparent 16%), radial-gradient(yellow 15%, transparent 16%);\n  background-size: 2vw 2vw;\n  background-position: 0 0, 10px 10px; }\n  .donut.sprinkles::after {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.chocolate {\n  background-color: #362311;\n  border: 0.5vw solid #5d3b1d; }\n  .donut.chocolate::before {\n    background-color: white;\n    border: 0.5vw solid #5d3b1d; }\n\n* {\n  box-sizing: border-box; }\n\nbody {\n  display: flex;\n  height: 100vh;\n  width: 100vw; }\n\n.row {\n  display: block;\n  width: 100vw;\n  height: 30%; }\n\n.container {\n  height: 100vh;\n  width: 100vw; }\n", "", {"version":3,"sources":["/./sass/sass/_normalize.scss","/./sass/style.scss","/./sass/sass/_donuts.scss","/./sass/sass/_colors.scss","/./sass/sass/_main.scss"],"names":[],"mappings":"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","file":"style.scss","sourcesContent":["/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\n\narticle,\naside,\ndetails, /* 1 */\nfigcaption,\nfigure,\nfooter,\nheader,\nmain, /* 2 */\nmenu,\nnav,\nsection,\nsummary { /* 1 */\n  display: block;\n}\n\n/**\n * Add the correct display in IE 9-.\n */\n\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n}\n\n/**\n * Add the correct display in iOS 4-7.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\n\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\n\ntemplate, /* 1 */\n[hidden] {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\n\na {\n  background-color: transparent; /* 1 */\n  -webkit-text-decoration-skip: objects; /* 2 */\n}\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\n\na:active,\na:hover {\n  outline-width: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\n\nabbr[title] {\n  border-bottom: none; /* 1 */\n  text-decoration: underline; /* 2 */\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\n\nb,\nstrong {\n  font-weight: inherit;\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * Add the correct font style in Android 4.3-.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Add the correct background and color in IE 9-.\n */\n\nmark {\n  background-color: #ff0;\n  color: #000;\n}\n\n/**\n * Add the correct font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove the border on images inside links in IE 10-.\n */\n\nimg {\n  border-style: none;\n}\n\n/**\n * Hide the overflow in IE.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/**\n * Add the correct margin in IE 8.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\n\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit; /* 1 */\n  margin: 0; /* 2 */\n}\n\n/**\n * Restore the font weight unset by the previous rule.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\n\nbutton,\ninput { /* 1 */\n  overflow: visible;\n}\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\n\nbutton,\nselect { /* 1 */\n  text-transform: none;\n}\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\n\nbutton,\nhtml [type=\"button\"], /* 1 */\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n}\n\n/**\n * Remove the inner border and padding in Firefox.\n */\n\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\n\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\n\nlegend {\n  box-sizing: border-box; /* 1 */\n  color: inherit; /* 2 */\n  display: table; /* 1 */\n  max-width: 100%; /* 1 */\n  padding: 0; /* 3 */\n  white-space: normal; /* 1 */\n}\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n","/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct display in IE 9-.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline; }\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\ntemplate,\n[hidden] {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Restore the font weight unset by the previous rule.\n */\noptgroup {\n  font-weight: bold; }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n.donut {\n  border-radius: 50%;\n  box-shadow: 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  float: left;\n  height: 10vw;\n  width: 10vw;\n  margin: .5vw;\n  position: relative; }\n  .donut:hover {\n    cursor: pointer; }\n\n.hole, .donut.glazed::before, .donut.sprinkles::after, .donut.chocolate::before {\n  border-radius: 50%;\n  box-shadow: inset 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: 4vw;\n  width: 4vw;\n  transform: translateX(-50%) translateY(-50%); }\n\n.donut.glazed {\n  background-color: rgba(252, 249, 237, 0.96);\n  border: 0.5vw solid #f5deb2; }\n  .donut.glazed::before {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.sprinkles {\n  background-color: #ff708a;\n  border: 0.5vw solid #f5deb2;\n  background-image: radial-gradient(#0fc 15%, transparent 16%), radial-gradient(yellow 15%, transparent 16%);\n  background-size: 2vw 2vw;\n  background-position: 0 0, 10px 10px; }\n  .donut.sprinkles::after {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.chocolate {\n  background-color: #362311;\n  border: 0.5vw solid #5d3b1d; }\n  .donut.chocolate::before {\n    background-color: white;\n    border: 0.5vw solid #5d3b1d; }\n\n* {\n  box-sizing: border-box; }\n\nbody {\n  display: flex;\n  height: 100vh;\n  width: 100vw; }\n\n.row {\n  display: block;\n  width: 100vw;\n  height: 30%; }\n\n.container {\n  height: 100vh;\n  width: 100vw; }\n","$radius: 10vw;\n$border: .5vw;\n$hole-radius: 2.5;\n\n.donut {\n  border-radius: 50%;\n  box-shadow:.5vw .5vw 0 rgba(0,0,0,.1);\n  float: left;\n  height: $radius;\n  width: $radius;\n  margin: .5vw;\n  position: relative;\n  &:hover {\n    cursor: pointer;\n  }\n}\n\n.hole {\n  border-radius: 50%;\n  box-shadow: inset .5vw .5vw 0 rgba(0,0,0,.1);\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: $radius/$hole-radius;\n  width: $radius/$hole-radius;\n  transform: translateX(-50%) translateY(-50%);\n}\n\n.donut.glazed {\n  background-color: $cream;\n  border: $border solid $wheat;\n\n  &::before {\n    @extend .hole;\n    background-color: white;\n    border: $border solid $wheat;\n  }\n}\n\n.donut.sprinkles {\n  background-color: $pink;\n  border: $border solid $wheat;\n  background-image: radial-gradient(\n    #0fc 15%, transparent 16%),\n    radial-gradient(yellow 15%,\n      transparent 16%);\n  background-size: 2vw 2vw;\n  background-position: 0 0, 10px 10px;\n\n  &::after {\n    @extend .hole;\n    background-color: white;\n    border: $border solid $wheat;\n  }\n}\n\n.donut.chocolate {\n  background-color: $dark-brown;\n  border: $border solid $brown;\n  &::before {\n    @extend .hole;\n    background-color: white;\n    border: $border solid $brown;\n  }\n}\n","$cream: hsla(47, 73%, 96%, 0.96);\n$wheat: hsl(39, 77%, 83%);\n$brown: hsl(28, 52%, 24%);\n$dark-brown: hsl(29, 52%, 14%);\n$pink: hsl(349, 100%, 72%);\n","* {\n  box-sizing: border-box;\n}\n\nbody {\n  display: flex;\n  height: 100vh;\n  width: 100vw;\n}\n\n.row {\n  display: block;\n  width: 100vw;\n  height: 30%;\n}\n\n\n.container {\n  height: 100vh;\n  width: 100vw;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct display in IE 9-.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline; }\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\ntemplate,\n[hidden] {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Restore the font weight unset by the previous rule.\n */\noptgroup {\n  font-weight: bold; }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n.donut {\n  border-radius: 50%;\n  box-shadow: 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  float: left;\n  height: 10vw;\n  width: 10vw;\n  margin: .5vw;\n  position: relative; }\n  .donut:hover {\n    cursor: pointer; }\n\n.hole, .donut.glazed::before, .donut.sprinkles::after, .donut.chocolate::before {\n  border-radius: 50%;\n  box-shadow: inset 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: 4vw;\n  width: 4vw;\n  transform: translateX(-50%) translateY(-50%); }\n\n.donut.glazed {\n  background-color: rgba(252, 249, 237, 0.96);\n  border: 0.5vw solid #f5deb2; }\n  .donut.glazed::before {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.sprinkles {\n  background-color: #ff708a;\n  border: 0.5vw solid #f5deb2;\n  background-image: radial-gradient(#0fc 15%, transparent 16%), radial-gradient(yellow 15%, transparent 16%);\n  background-size: 2vw 2vw;\n  background-position: 0 0, 10px 10px; }\n  .donut.sprinkles::after {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.chocolate {\n  background-color: #362311;\n  border: 0.5vw solid #5d3b1d; }\n  .donut.chocolate::before {\n    background-color: white;\n    border: 0.5vw solid #5d3b1d; }\n\n.loading {\n  -webkit-animation: spin 4s infinite linear;\n  box-shadow: none; }\n  .loading.hole, .loading.donut.glazed::before, .loading.donut.sprinkles::after, .loading.donut.chocolate::before {\n    box-shadow: none; }\n  .loading:hover {\n    cursor: default; }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n* {\n  box-sizing: border-box; }\n\nbody {\n  display: flex;\n  height: 100vh;\n  width: 100vw; }\n\n.row {\n  display: block;\n  width: 100vw;\n  height: 30%; }\n\n.container {\n  height: 100vh;\n  width: 100vw; }\n", "", {"version":3,"sources":["/./sass/sass/_normalize.scss","/./sass/style.scss","/./sass/sass/_donuts.scss","/./sass/sass/_colors.scss","/./sass/sass/_main.scss"],"names":[],"mappings":"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","file":"style.scss","sourcesContent":["/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\n\narticle,\naside,\ndetails, /* 1 */\nfigcaption,\nfigure,\nfooter,\nheader,\nmain, /* 2 */\nmenu,\nnav,\nsection,\nsummary { /* 1 */\n  display: block;\n}\n\n/**\n * Add the correct display in IE 9-.\n */\n\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n}\n\n/**\n * Add the correct display in iOS 4-7.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\n\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\n\ntemplate, /* 1 */\n[hidden] {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\n\na {\n  background-color: transparent; /* 1 */\n  -webkit-text-decoration-skip: objects; /* 2 */\n}\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\n\na:active,\na:hover {\n  outline-width: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\n\nabbr[title] {\n  border-bottom: none; /* 1 */\n  text-decoration: underline; /* 2 */\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\n\nb,\nstrong {\n  font-weight: inherit;\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * Add the correct font style in Android 4.3-.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Add the correct background and color in IE 9-.\n */\n\nmark {\n  background-color: #ff0;\n  color: #000;\n}\n\n/**\n * Add the correct font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove the border on images inside links in IE 10-.\n */\n\nimg {\n  border-style: none;\n}\n\n/**\n * Hide the overflow in IE.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/**\n * Add the correct margin in IE 8.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\n\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit; /* 1 */\n  margin: 0; /* 2 */\n}\n\n/**\n * Restore the font weight unset by the previous rule.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\n\nbutton,\ninput { /* 1 */\n  overflow: visible;\n}\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\n\nbutton,\nselect { /* 1 */\n  text-transform: none;\n}\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\n\nbutton,\nhtml [type=\"button\"], /* 1 */\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n}\n\n/**\n * Remove the inner border and padding in Firefox.\n */\n\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\n\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\n\nlegend {\n  box-sizing: border-box; /* 1 */\n  color: inherit; /* 2 */\n  display: table; /* 1 */\n  max-width: 100%; /* 1 */\n  padding: 0; /* 3 */\n  white-space: normal; /* 1 */\n}\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n","/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct display in IE 9-.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline; }\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\ntemplate,\n[hidden] {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Restore the font weight unset by the previous rule.\n */\noptgroup {\n  font-weight: bold; }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n.donut {\n  border-radius: 50%;\n  box-shadow: 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  float: left;\n  height: 10vw;\n  width: 10vw;\n  margin: .5vw;\n  position: relative; }\n  .donut:hover {\n    cursor: pointer; }\n\n.hole, .donut.glazed::before, .donut.sprinkles::after, .donut.chocolate::before {\n  border-radius: 50%;\n  box-shadow: inset 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.1);\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: 4vw;\n  width: 4vw;\n  transform: translateX(-50%) translateY(-50%); }\n\n.donut.glazed {\n  background-color: rgba(252, 249, 237, 0.96);\n  border: 0.5vw solid #f5deb2; }\n  .donut.glazed::before {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.sprinkles {\n  background-color: #ff708a;\n  border: 0.5vw solid #f5deb2;\n  background-image: radial-gradient(#0fc 15%, transparent 16%), radial-gradient(yellow 15%, transparent 16%);\n  background-size: 2vw 2vw;\n  background-position: 0 0, 10px 10px; }\n  .donut.sprinkles::after {\n    background-color: white;\n    border: 0.5vw solid #f5deb2; }\n\n.donut.chocolate {\n  background-color: #362311;\n  border: 0.5vw solid #5d3b1d; }\n  .donut.chocolate::before {\n    background-color: white;\n    border: 0.5vw solid #5d3b1d; }\n\n.loading {\n  -webkit-animation: spin 4s infinite linear;\n  box-shadow: none; }\n  .loading.hole, .loading.donut.glazed::before, .loading.donut.sprinkles::after, .loading.donut.chocolate::before {\n    box-shadow: none; }\n  .loading:hover {\n    cursor: default; }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n* {\n  box-sizing: border-box; }\n\nbody {\n  display: flex;\n  height: 100vh;\n  width: 100vw; }\n\n.row {\n  display: block;\n  width: 100vw;\n  height: 30%; }\n\n.container {\n  height: 100vh;\n  width: 100vw; }\n","$radius: 10vw;\n$border: .5vw;\n$hole-radius: 2.5;\n\n.donut {\n  border-radius: 50%;\n  box-shadow:.5vw .5vw 0 rgba(0,0,0,.1);\n  float: left;\n  height: $radius;\n  width: $radius;\n  margin: .5vw;\n  position: relative;\n  &:hover {\n    cursor: pointer;\n  }\n}\n\n.hole {\n  border-radius: 50%;\n  box-shadow: inset .5vw .5vw 0 rgba(0,0,0,.1);\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: $radius/$hole-radius;\n  width: $radius/$hole-radius;\n  transform: translateX(-50%) translateY(-50%);\n}\n\n.donut.glazed {\n  background-color: $cream;\n  border: $border solid $wheat;\n\n  &::before {\n    @extend .hole;\n    background-color: white;\n    border: $border solid $wheat;\n  }\n}\n\n.donut.sprinkles {\n  background-color: $pink;\n  border: $border solid $wheat;\n  background-image: radial-gradient(\n    #0fc 15%, transparent 16%),\n    radial-gradient(yellow 15%,\n      transparent 16%);\n  background-size: 2vw 2vw;\n  background-position: 0 0, 10px 10px;\n\n  &::after {\n    @extend .hole;\n    background-color: white;\n    border: $border solid $wheat;\n  }\n}\n\n.donut.chocolate {\n  background-color: $dark-brown;\n  border: $border solid $brown;\n  &::before {\n    @extend .hole;\n    background-color: white;\n    border: $border solid $brown;\n  }\n}\n\n.loading {\n  -webkit-animation: spin 4s infinite linear;\n  box-shadow: none;\n  &.hole {\n    box-shadow: none;\n  }\n  &:hover {\n    cursor: default;\n  }\n}\n\n@-webkit-keyframes spin {\n  0%  {-webkit-transform: rotate(0deg);}\n  100% {-webkit-transform: rotate(360deg);}\n}\n","$cream: hsla(47, 73%, 96%, 0.96);\n$wheat: hsl(39, 77%, 83%);\n$brown: hsl(28, 52%, 24%);\n$dark-brown: hsl(29, 52%, 14%);\n$pink: hsl(349, 100%, 72%);\n","* {\n  box-sizing: border-box;\n}\n\nbody {\n  display: flex;\n  height: 100vh;\n  width: 100vw;\n}\n\n.row {\n  display: block;\n  width: 100vw;\n  height: 30%;\n}\n\n\n.container {\n  height: 100vh;\n  width: 100vw;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 199 */
+/* 196 */
 /***/ function(module, exports) {
 
 	/*
@@ -32035,7 +31869,7 @@
 
 
 /***/ },
-/* 200 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -32287,32 +32121,228 @@
 
 
 /***/ },
-/* 201 */
-/***/ function(module, exports) {
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _donutJsx = __webpack_require__(199);
+	
+	var _donutJsx2 = _interopRequireDefault(_donutJsx);
+	
+	var DonutRow = (function (_Component) {
+	  _inherits(DonutRow, _Component);
+	
+	  function DonutRow(props, context) {
+	    _classCallCheck(this, DonutRow);
+	
+	    _get(Object.getPrototypeOf(DonutRow.prototype), "constructor", this).call(this, props, context);
+	  }
+	
+	  _createClass(DonutRow, [{
+	    key: "render",
+	    value: function render() {
+	      var _this = this;
+	
+	      var donuts = this.props.donuts.map(function (donut) {
+	        return _react2["default"].createElement(
+	          "div",
+	          { key: donut.id },
+	          _react2["default"].createElement(_donutJsx2["default"], { donut: donut, rowId: _this.props.rowId, actions: _this.props.actions })
+	        );
+	      });
+	      return _react2["default"].createElement(
+	        "div",
+	        null,
+	        donuts
+	      );
+	    }
+	  }]);
+	
+	  return DonutRow;
+	})(_react.Component);
+	
+	exports["default"] = DonutRow;
+	module.exports = exports["default"];
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	exports.__esModule = true;
-	function createThunkMiddleware(extraArgument) {
-	  return function (_ref) {
-	    var dispatch = _ref.dispatch;
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        if (typeof action === 'function') {
-	          return action(dispatch, getState, extraArgument);
-	        }
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
 	
-	        return next(action);
-	      };
-	    };
-	  };
-	}
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	var thunk = createThunkMiddleware();
-	thunk.withExtraArgument = createThunkMiddleware;
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 	
-	exports['default'] = thunk;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var Donut = (function (_Component) {
+	  _inherits(Donut, _Component);
+	
+	  function Donut(props, context) {
+	    _classCallCheck(this, Donut);
+	
+	    _get(Object.getPrototypeOf(Donut.prototype), 'constructor', this).call(this, props, context);
+	  }
+	
+	  _createClass(Donut, [{
+	    key: 'remove',
+	    value: function remove() {
+	      this.props.actions.remove(this.props.donut.id, this.props.rowId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var donut = 'donut ' + this.props.donut.flavor;
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement('div', { className: donut, onClick: this.remove.bind(this) })
+	      );
+	    }
+	  }]);
+	
+	  return Donut;
+	})(_react.Component);
+	
+	exports['default'] = Donut;
+	module.exports = exports['default'];
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var Buttons = (function (_Component) {
+	  _inherits(Buttons, _Component);
+	
+	  function Buttons(props, context) {
+	    _classCallCheck(this, Buttons);
+	
+	    _get(Object.getPrototypeOf(Buttons.prototype), "constructor", this).call(this, props, context);
+	  }
+	
+	  _createClass(Buttons, [{
+	    key: "submit",
+	    value: function submit() {
+	      this.props.actions.submit();
+	    }
+	  }, {
+	    key: "undo",
+	    value: function undo() {
+	      this.props.actions.undo();
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2["default"].createElement(
+	        "div",
+	        null,
+	        _react2["default"].createElement(
+	          "button",
+	          { className: "btn", onClick: this.submit.bind(this) },
+	          "Submit"
+	        ),
+	        _react2["default"].createElement(
+	          "button",
+	          { className: "btn", onClick: this.undo.bind(this) },
+	          "Undo"
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Buttons;
+	})(_react.Component);
+	
+	var Reset = (function (_Component2) {
+	  _inherits(Reset, _Component2);
+	
+	  function Reset(props, context) {
+	    _classCallCheck(this, Reset);
+	
+	    _get(Object.getPrototypeOf(Reset.prototype), "constructor", this).call(this, props, context);
+	  }
+	
+	  _createClass(Reset, [{
+	    key: "reset",
+	    value: function reset() {
+	      this.props.actions.loading();
+	      this.props.actions.fetchDonuts();
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2["default"].createElement(
+	        "div",
+	        null,
+	        _react2["default"].createElement(
+	          "button",
+	          { className: "btn", onClick: this.reset.bind(this) },
+	          "Reset"
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Reset;
+	})(_react.Component);
+	
+	exports["default"] = {
+	  Buttons: Buttons,
+	  Reset: Reset
+	};
+	module.exports = exports["default"];
 
 /***/ }
 /******/ ]);

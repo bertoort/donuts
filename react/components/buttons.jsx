@@ -25,7 +25,8 @@ class Reset extends Component {
     super(props, context)
   }
   reset() {
-    this.props.actions.fetchDonuts();
+    this.props.actions.loading()
+    this.props.actions.fetchDonuts()
   }
   render () {
     return (
