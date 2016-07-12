@@ -20,9 +20,29 @@ body {
   height: 30%;
 }
 
-.fixed-action-btn {
-  bottom: 45px;
-  right: 24px;
+.fixed-action {
+  top: 1.5em;
+  right: 3em;
+  height: 2em;
+}
+
+.reset {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+}
+
+.turn {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  &:hover .btn-floating {
+    cursor: default;
+  }
+}
+
+.intro {
+  margin-left: 1em;
 }
 
 button {

@@ -1,9 +1,12 @@
 import {donut} from "./donut.jsx";
 
 let initialState = {
-  playerTurn: true,
   donuts: [[], [], []],
   loading: true,
+  intro: true,
+  currentTurn: "A",
+  computer: true,
+  over: true,
 }
 
 export const game = (state = initialState, action) => {
@@ -18,6 +21,8 @@ export const game = (state = initialState, action) => {
     case 'UNDO_MOVE':
       return donut(stateClone, action)
     case 'SUBMIT_TURN':
+      return donut(stateClone, action)
+    case 'SWITCH_MODE':
       return donut(stateClone, action)
     default:
       return state;

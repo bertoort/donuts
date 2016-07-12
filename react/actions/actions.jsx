@@ -17,6 +17,9 @@ export default {
   loading () {
     return {type: "DISPLAY_LOADING"}
   },
+  switchMode () {
+    return {type: "SWITCH_MODE"}
+  },
   fetchDonuts(rows) {
     return function (dispatch) {
       return $.get(`/random-board?rows=${rows}`)

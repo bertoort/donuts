@@ -10,7 +10,7 @@ $hole-radius: 2.5;
   width: $radius;
   margin: .5vw;
   position: relative;
-  &:hover {
+  &:hover:not(.intro) {
     cursor: pointer;
   }
 }
