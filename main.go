@@ -3,12 +3,16 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/julienschmidt/httprouter"
 )
 
 func main() {
-	port := "8080"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 	router := httprouter.New()
 	router.ServeFiles("/public/*filepath", http.Dir("public"))
 	router.GET("/", index)
