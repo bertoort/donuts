@@ -25,8 +25,10 @@ class Reset extends Component {
     super(props, context)
   }
   reset() {
-    this.props.actions.loading()
-    this.props.actions.fetchDonuts()
+    if (!this.props.game.loading) {
+      this.props.actions.loading()
+      this.props.actions.fetchDonuts()
+    }
   }
   render () {
     return (
@@ -42,24 +44,39 @@ class Turn extends Component {
     super(props, context)
   }
   switchMode() {
-    this.props.actions.switchMode()
+    if (!this.props.game.loading) {
+      this.props.actions.loading()
+      this.props.actions.fetchDonuts()
+      this.props.actions.switchMode()
+    }
   }
   render () {
     let turn = this.props.game.currentTurn
     let computer = this.props.game.computer
     let icon = 'fa-user'
-    let text = 'VS AI'
+    let text = 'Play VS AI'
     if (computer) {
       icon = 'fa-cogs'
-      text = 'VS Player'
+      text = 'Play VS Player'
     }
     let a = turn === "A" ? "tooltipped" : "disabled"
     let b = turn === "B" ? "tooltipped" : "disabled"
     return (
-      <div className="turn">
-        <button className={`btn-floating waves-effect waves-light pink accent-1 ${a}`} ><i className="fa fa-user"></i></button>
-        <button className={`btn-floating waves-effect waves-light pink accent-1 ${b}`} ><i className={`fa ${icon}`}></i></button>
-        <button className="waves-effect waves-light pink accent-1 btn" onClick={this.switchMode.bind(this)}>{text}</button>
+      <div className="turn row">
+        <div className="col s1">
+          <button className={`btn-floating waves-effect waves-light pink accent-1 ${a}`} ><i className="fa fa-user"></i></button>
+        </div>
+        <div className="col s1">
+          <button className={`btn-floating waves-effect waves-light pink accent-1 ${b}`} ><i className={`fa ${icon}`}></i></button>
+        </div>
+        <div className="col s3">
+          <button className="waves-effect waves-light pink accent-1 btn" onClick={this.switchMode.bind(this)}>{text}</button>
+        </div>
+        <div className="col s3">
+        {
+          turn === "B" && computer && !this.props.game.loading  ? <LoadingBar/> : undefined
+        }
+        </div>
       </div>
     )
   }
@@ -72,8 +89,28 @@ class Options extends Component {
   render () {
     return (
       <div>
-        <Reset actions={this.props.actions}/>
+        <Reset actions={this.props.actions} game={this.props.game}/>
         <Turn actions={this.props.actions} game={this.props.game}/>
+      </div>
+    )
+  }
+}
+
+class LoadingDonut extends Component {
+  render() {
+    return (
+      <div className="col s12">
+        <div className="donut image sprinkles loading"></div>
+      </div>
+    )
+  }
+}
+
+class LoadingBar extends Component {
+  render() {
+    return (
+      <div className="pink lighten-5 progress">
+        <div className="pink accent-1 indeterminate"></div>
       </div>
     )
   }
@@ -81,5 +118,6 @@ class Options extends Component {
 
 export default {
   Buttons,
-  Options
+  Options,
+  LoadingDonut
 }

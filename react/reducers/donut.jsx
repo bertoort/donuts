@@ -7,6 +7,9 @@ export const donut = (state, action) => {
     case 'LOAD_DONUTS':
       delete state.currentRow
       delete state.savedDonuts
+      delete state.oneRow
+      delete state.message
+      state.over = false
       state.donuts = action.data
       state.loading = false
       state.intro = false
@@ -15,7 +18,17 @@ export const donut = (state, action) => {
     case 'SUBMIT_TURN':
       delete state.currentRow
       delete state.savedDonuts
-      if (state.currentTurn === "A") {
+      let emptyRows = 0
+      state.donuts.forEach(function (row) {
+        if (row.length === 0) emptyRows++
+      })
+      if (emptyRows >= 2) {
+        state.oneRow = true
+      }
+      if (state.oneRow && isOver(state.donuts)) {
+        state.over = true
+        state.message = winnerMessage(state.currentTurn, state.computer)
+      } else if (state.currentTurn === "A") {
         state.currentTurn = "B"
       } else {
         state.currentTurn = "A"
@@ -30,7 +43,11 @@ export const donut = (state, action) => {
       state.computer = !state.computer
       return state
     case 'REMOVE_DONUT':
-      if (state.currentRow == undefined) state.currentRow = action.rowId
+      if (state.computer && state.currentTurn === "B") {
+        return state
+      } else if (state.currentRow == undefined) {
+        state.currentRow = action.rowId
+      }
       if (!state.savedDonuts) {
         state.savedDonuts = JSON.parse(JSON.stringify(state.donuts))
       }
@@ -38,7 +55,9 @@ export const donut = (state, action) => {
         return rows.reduce((newRow, donut) => {
           if (donut.id !== action.donutId || state.currentRow !== action.rowId) {
             newRow.push(donut)
-          };
+          } else if (state.oneRow && rows.length === 1) {
+            newRow.push(donut)
+          }
           return newRow
         }, [])
       })
@@ -47,3 +66,28 @@ export const donut = (state, action) => {
       return state;
   }
 };
+
+const isOver = game => {
+  let length = game.reduce((length, row) => {
+    return length += row.length
+  }, 0)
+  return length > 1 ? false : true
+}
+
+const winnerMessage = (turn, isComputer) => {
+  let message = ""
+  if (isComputer) {
+    if (turn === "A") {
+      message = "You Won!!"
+    } else {
+      message = "The Computer Won. Reset to Play Again"
+    }
+  } else {
+    if (turn === "A") {
+      message = "First Player Won"
+    } else {
+      message = "Second Player Won"
+    }
+  }
+  return message
+}

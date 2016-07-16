@@ -11,8 +11,6 @@ require('!raw!sass!../../sass/style.scss');
 
 const store = createStore(donutGame, applyMiddleware(thunk))
 
-// store.dispatch(fetchDonuts(3))
-
 render(
   <Provider store={store}>
     <Game/>

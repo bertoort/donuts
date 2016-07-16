@@ -9,9 +9,9 @@ class Intro extends Component {
     return (
       <div className="row">
         <div className="col s7">
-          <div className="donut sprinkles intro"></div>
-          <div className="donut chocolate intro"></div>
-          <div className="donut glazed intro"></div>
+          <div className="donut image sprinkles intro"></div>
+          <div className="donut image chocolate intro"></div>
+          <div className="donut image glazed intro"></div>
         </div>
         <div className="intro">
           <div className="col s6">

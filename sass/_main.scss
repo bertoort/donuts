@@ -14,9 +14,13 @@ body {
   font-size: 3em;
 }
 
+#donuts, main {
+  width: 100%;
+}
+
 .row {
   display: block;
-  width: 100vw;
+  width: 100%;
   height: 30%;
 }
 
@@ -36,9 +40,16 @@ body {
   position: fixed;
   bottom: 1em;
   left: 1em;
+  height: auto;
+  margin: 0;
   &:hover .btn-floating {
     cursor: default;
   }
+}
+
+.progress {
+  padding-top: 35px;
+  margin-top: 30px;
 }
 
 .intro {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import DonutActions from "./../actions/actions.jsx"
 import Menu from "./menu.jsx"
 import Intro from "./intro.jsx"
-import Donuts from "./donuts.jsx"
+import {Donuts} from "./donuts.jsx"
 
 class Game extends Component {
   render () {

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -34,6 +35,25 @@ type attributes struct {
 func index(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
 	attr := attributes{Title: "Donuts"}
 	renderTemplate(res, "index", &attr)
+}
+
+// bestMove route will check the game and provide the best next move
+func bestMove(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+	defer req.Body.Close()
+	body, _ := ioutil.ReadAll(req.Body)
+	var board [][]Donut
+	if err := json.Unmarshal(body, &board); err != nil {
+		panic(err)
+	}
+	res.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	res.WriteHeader(http.StatusOK)
+	var response = struct {
+		Valid bool `json:"valid"`
+		Over  bool `json:"over"`
+	}{Valid: true, Over: false}
+	if err := json.NewEncoder(res).Encode(response); err != nil {
+		panic(err)
+	}
 }
 
 // randomBoard route will respond with a random board json

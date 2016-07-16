@@ -8,7 +8,7 @@ class DonutRow extends Component {
   render () {
     let donuts = this.props.donuts.map(donut => {
       return( <div key={donut.id}>
-                <Donut donut={donut} rowId={this.props.rowId} actions={this.props.actions}/>
+                <Donut donut={donut} rowId={this.props.rowId} actions={this.props.actions} game={this.props.game}/>
               </div>
             )
     })

@@ -5,8 +5,8 @@ let initialState = {
   loading: true,
   intro: true,
   currentTurn: "A",
-  computer: true,
-  over: true,
+  computer: false,
+  over: false,
 }
 
 export const game = (state = initialState, action) => {
