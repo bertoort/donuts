@@ -78,15 +78,15 @@ const winnerMessage = (turn, isComputer) => {
   let message = ""
   if (isComputer) {
     if (turn === "A") {
-      message = "You Won!!"
+      message = "You Won!! 🎉"
     } else {
-      message = "The Computer Won. Reset to Play Again"
+      message = "The Computer Won. Reset to Play Again 🎉"
     }
   } else {
     if (turn === "A") {
-      message = "First Player Won"
+      message = "First Player Won 🎉"
     } else {
-      message = "Second Player Won"
+      message = "Second Player Won 🎉"
     }
   }
   return message

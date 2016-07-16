@@ -54,10 +54,10 @@ class Turn extends Component {
     let turn = this.props.game.currentTurn
     let computer = this.props.game.computer
     let icon = 'fa-user'
-    let text = 'Play VS AI'
+    let text = 'Player VS Computer'
     if (computer) {
       icon = 'fa-cogs'
-      text = 'Play VS Player'
+      text = 'Player VS Player'
     }
     let a = turn === "A" ? "tooltipped" : "disabled"
     let b = turn === "B" ? "tooltipped" : "disabled"

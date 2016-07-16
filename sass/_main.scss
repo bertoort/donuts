@@ -10,12 +10,17 @@ body {
   color: $dark-brown;
 }
 
-.title {
-  font-size: 3em;
+button {
+  margin: 2em;
 }
 
 #donuts, main {
   width: 100%;
+}
+
+.title {
+  font-size: 3em;
+  margin-bottom: 70px;
 }
 
 .row {
@@ -56,6 +61,8 @@ body {
   margin-left: 1em;
 }
 
-button {
-  margin: 2em;
+.message {
+  position: fixed;
+  top: 50vh;
+  left: 43vw;
 }

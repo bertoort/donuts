@@ -30,7 +30,7 @@ class Board extends Component {
     })
     return (
       <div >
-        <h5>{this.props.game.message}</h5>
+        <h5 className="message">{this.props.game.message}</h5>
         {donutRows}
         {this.props.game.currentRow !== undefined? <Buttons game={this.props.game}actions={this.props.actions}/> : undefined}
       </div>
