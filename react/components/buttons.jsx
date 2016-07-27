@@ -61,6 +61,9 @@ class Turn extends Component {
     }
     let a = turn === "A" ? "tooltipped" : "disabled"
     let b = turn === "B" ? "tooltipped" : "disabled"
+    if (turn === "B" && computer && !this.props.game.over) {
+      this.props.actions.computerMove(this.props.game)
+    }
     return (
       <div className="turn row">
         <div className="col s1">
@@ -74,7 +77,7 @@ class Turn extends Component {
         </div>
         <div className="col s3">
         {
-          turn === "B" && computer && !this.props.game.loading  ? <LoadingBar/> : undefined
+          turn === "B" && computer && !this.props.game.loading && !this.props.game.over  ? <LoadingBar/> : undefined
         }
         </div>
       </div>

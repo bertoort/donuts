@@ -9,18 +9,17 @@ export default {
   },
   submit () {
     return {type: "SUBMIT_TURN"}
-    // return function (dispatch) {
-    //   return $.ajax({
-    //     url: '/best-move',
-    //     type: 'POST',
-    //     contentType: 'application/json; charset=utf-8',
-    //     data: JSON.stringify(game)
-    //   })
-    //     .done(data => dispatch())
-    // }
   },
   computerMove (game) {
-
+    return function (dispatch) {
+      return $.ajax({
+        url: '/best-move',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(game.donuts)
+      })
+        .done(data => dispatch({data, type: "COMPUTER_TURN"}))
+    }
   },
   loading () {
     return {type: "DISPLAY_LOADING"}

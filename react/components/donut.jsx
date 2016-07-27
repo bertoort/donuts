@@ -5,7 +5,7 @@ class Donut extends Component {
     super(props, context)
   }
   remove() {
-    if (!this.props.game.over) {
+    if (!(this.props.game.computer && this.props.game.currentTurn === "B" || this.props.game.over)) {
       this.props.actions.remove(this.props.donut.id, this.props.rowId);
     }
   }

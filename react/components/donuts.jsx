@@ -6,6 +6,8 @@ class Donuts extends Component {
   render () {
     if (this.props.game.computer && this.props.game.currentTurn === "B" || this.props.game.over) {
       $('.donut').addClass('image')
+    } else {
+      $('.donut').removeClass('image')
     }
     return (
       <div className="col s12">

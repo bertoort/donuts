@@ -4,6 +4,10 @@ export const donut = (state, action) => {
       state.loading = true
       state.intro = false
       return state
+    case 'COMPUTER_TURN':
+      state.donuts = action.data
+      evaluateTurn(state)
+      return state
     case 'LOAD_DONUTS':
       delete state.currentRow
       delete state.savedDonuts
@@ -12,27 +16,10 @@ export const donut = (state, action) => {
       state.over = false
       state.donuts = action.data
       state.loading = false
-      state.intro = false
       state.currentTurn = "A"
       return state
     case 'SUBMIT_TURN':
-      delete state.currentRow
-      delete state.savedDonuts
-      let emptyRows = 0
-      state.donuts.forEach(function (row) {
-        if (row.length === 0) emptyRows++
-      })
-      if (emptyRows >= 2) {
-        state.oneRow = true
-      }
-      if (state.oneRow && isOver(state.donuts)) {
-        state.over = true
-        state.message = winnerMessage(state.currentTurn, state.computer)
-      } else if (state.currentTurn === "A") {
-        state.currentTurn = "B"
-      } else {
-        state.currentTurn = "A"
-      }
+      evaluateTurn(state)
       return state
     case 'UNDO_MOVE':
       if (state.savedDonuts) state.donuts = state.savedDonuts
@@ -80,7 +67,7 @@ const winnerMessage = (turn, isComputer) => {
     if (turn === "A") {
       message = "You Won!! 🎉"
     } else {
-      message = "The Computer Won. Reset to Play Again 🎉"
+      message = "The Computer Won 🎉 \n Reset to Play Again"
     }
   } else {
     if (turn === "A") {
@@ -90,4 +77,24 @@ const winnerMessage = (turn, isComputer) => {
     }
   }
   return message
+}
+
+const evaluateTurn = state => {
+  delete state.currentRow
+  delete state.savedDonuts
+  let emptyRows = 0
+  state.donuts.forEach(function (row) {
+    if (row.length === 0) emptyRows++
+  })
+  if (emptyRows >= 2) {
+    state.oneRow = true
+  }
+  if (state.oneRow && isOver(state.donuts)) {
+    state.over = true
+    state.message = winnerMessage(state.currentTurn, state.computer)
+  } else if (state.currentTurn === "A") {
+    state.currentTurn = "B"
+  } else {
+    state.currentTurn = "A"
+  }
 }

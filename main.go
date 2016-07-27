@@ -17,7 +17,7 @@ func main() {
 	router.ServeFiles("/public/*filepath", http.Dir("public"))
 	router.GET("/", index)
 	router.GET("/random-board", randomBoard)
-	router.POST("/best-move", bestMove)
+	router.POST("/best-move", computerMove)
 	log.Printf("Running on port: %v", port)
 	log.Fatal(http.ListenAndServe(":"+port, router))
 }
