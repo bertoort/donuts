@@ -33,7 +33,7 @@ class Reset extends Component {
   render () {
     return (
       <div>
-        <button className="btn reset waves-effect waves-light pink accent-1" onClick={this.reset.bind(this)}>Reset</button>
+        <button className="btn waves-effect waves-light pink accent-1" onClick={this.reset.bind(this)}>Reset</button>
       </div>
     )
   }
@@ -73,8 +73,9 @@ class Turn extends Component {
           <button className={`btn-floating waves-effect waves-light pink accent-1 ${b}`} ><i className={`fa ${icon}`}></i></button>
         </div>
         <div className="col s3">
-          <button className="waves-effect waves-light pink accent-1 btn" onClick={this.switchMode.bind(this)}>{text}</button>
+          <Reset actions={this.props.actions} game={this.props.game}/>
         </div>
+        <button className="waves-effect turnToggle waves-light pink accent-1 btn" onClick={this.switchMode.bind(this)}>{text}</button>
         <div className="col s3">
         {
           turn === "B" && computer && !this.props.game.loading && !this.props.game.over  ? <LoadingBar/> : undefined
@@ -92,7 +93,6 @@ class Options extends Component {
   render () {
     return (
       <div>
-        <Reset actions={this.props.actions} game={this.props.game}/>
         <Turn actions={this.props.actions} game={this.props.game}/>
       </div>
     )
