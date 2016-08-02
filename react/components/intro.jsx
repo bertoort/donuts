@@ -25,7 +25,7 @@ class Intro extends Component {
               Click start to play
             </p>
             <p>
-              (If you'd like to read the rules more carefully, click the hamburger menu in the corner
+              (If you'd like to read the rules more carefully, click the menu on the corner
               and then the little book. Have fun!)
             </p>
             <button className="btn waves-effect waves-light pink accent-1" onClick={this.start.bind(this)}>Start</button>
