@@ -47,8 +47,8 @@ func computerMove(res http.ResponseWriter, req *http.Request, ps httprouter.Para
 	}
 	res.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	res.WriteHeader(http.StatusOK)
-	response := solve(board)
-	if err := json.NewEncoder(res).Encode(response); err != nil {
+	solve(board)
+	if err := json.NewEncoder(res).Encode(board); err != nil {
 		panic(err)
 	}
 }

@@ -21,50 +21,50 @@ var sleepTime = time.Millisecond * 500
 // donut flavors index
 var flavors = [3]string{"sprinkles", "chocolate", "glazed"}
 
-// functions to run depending on solvable pattern
-var patterns = []func(b []int){
-	advanced,
-	twoZeros,
-	removeRow,
-	twoOnes,
-	oneOneOne,
-	twoEven,
-	oneTwoToThree,
-	oneThreeToTwo,
-	twoThreeToOne,
-}
-
 // bestMove finds the best move for an array
 func bestMove(b []int) {
-	patterns[evaluate(b)](b)
-}
-
-// evaluate finds a solution pattern
-func evaluate(b []int) (pattern int) {
-	numCount := [9]int{}
+	var numCount [10]int
+	var duplicate int
 	for i := 0; i < len(b); i++ {
-		if b[i] <= 3 {
-			numCount[b[i]]++
+		numCount[b[i]]++
+		if numCount[b[i]] > 1 {
+			duplicate = b[i]
 		}
 	}
 	if numCount[0] == 2 {
-		pattern = 1
+		twoZeros(b)
 	} else if numCount[0] == 1 && numCount[1] == 1 {
-		pattern = 2
+		removeRow(b)
 	} else if numCount[0] == 1 && numCount[1] > 1 {
-		pattern = 3
+		twoOnes(b)
 	} else if numCount[1] == 2 {
-		pattern = 4
-	} else if numCount[0] == 1 {
-		pattern = 5
-	} else if numCount[1] == 1 && numCount[2] == 1 {
-		pattern = 6
-	} else if numCount[1] == 1 && numCount[3] == 1 {
-		pattern = 7
-	} else if numCount[3] == 1 && numCount[2] == 1 {
-		pattern = 8
+		oneOneOne(b)
+	} else if duplicate != 0 && numCount[0] != 1 {
+		toDuplicate(b, duplicate)
+	} else if numCount[0] == 1 && duplicate == 0 {
+		twoEven(b)
+	} else if numCount[1] == 1 && numCount[2] == 1 && numCount[3] != 1 {
+		oneTwoToThree(b)
+	} else if numCount[1] == 1 && numCount[3] == 1 && numCount[2] != 1 {
+		oneThreeToTwo(b)
+	} else if numCount[3] == 1 && numCount[2] == 1 && numCount[1] != 1 {
+		twoThreeToOne(b)
+	} else {
+		guess(b)
 	}
-	return
+}
+
+func toDuplicate(b []int, d int) {
+	var change bool
+	for i := 0; i < len(b); i++ {
+		if d != b[i] {
+			b[i] = 0
+			change = true
+		}
+	}
+	if !change {
+		b[0] = 0
+	}
 }
 
 // the following functions are used to handle patterns of solutions
@@ -153,39 +153,12 @@ func twoEven(b []int) {
 	}
 }
 
-func advanced(b []int) {
-	duplicate := findDuplicate(b)
-	if duplicate != 0 {
-		for i := 0; i < len(b); i++ {
-			if duplicate != b[i] {
-				b[i] = 0
-				break
-			}
-		}
-	} else {
-		guess(b)
-	}
-}
-
-func findDuplicate(b []int) (duplicate int) {
-	var list [10]int
-	for i := 0; i < len(b); i++ {
-		if list[b[i]] == 0 {
-			list[b[i]] = 1
-		} else {
-			duplicate = b[i]
-			break
-		}
-	}
-	return
-}
-
 // solve finds the best move for a board
-func solve(b [][]Donut) [][]Donut {
+func solve(b [][]Donut) {
 	time.Sleep(sleepTime)
 	board := formatBoard(b)
 	bestMove(board)
-	return formatSolution(b, board)
+	formatSolution(b, board)
 }
 
 // formatSolution will match the size of the board to an array
