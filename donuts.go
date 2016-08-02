@@ -70,11 +70,12 @@ func toDuplicate(b []int, d int) {
 // the following functions are used to handle patterns of solutions
 
 func guess(b []int) {
-	for i := 0; i < len(b); i++ {
-		if b[i] != 0 {
-			b[i] = b[i] - 1
-			break
-		}
+	i := rand.New(rand.NewSource(time.Now().UnixNano())).Intn(len(b))
+	if b[i] != 0 {
+		randomNum := rand.New(rand.NewSource(time.Now().UnixNano())).Intn(b[i]-1) + 1
+		b[i] = b[i] - randomNum
+	} else {
+		guess(b)
 	}
 }
 
