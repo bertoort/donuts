@@ -23,6 +23,6 @@ The person who leaves the last donut for the other player to take is the winner.
 
 <img src="https://facebook.github.io/react/img/logo.svg" width="50px">
 <img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" width="50px">
-<img src="https://www.gopheracademy.com/images/cowboy-color.png" width="50px">
+<img src="https://golang.org/doc/gopher/frontpage.png" width="50px">
 
 Built with React, Redux and Go!
